@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Styles -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <!-- OpenLayers library -->
+    <link rel="stylesheet" href="./libs/v10.2.1-package/ol.css">
+
+    <!-- Styles for the application -->
+    <link rel="stylesheet" href="./styles/index.css" type="text/css"/>
+
+    <!-- Application icon -->
+    <link rel="icon" href="./images/film.svg" type="image/swg">
+
+    <title>Mogilev in 1943 | Then and now</title>
+    
+  </head>
+  
+  <body class="d-flex flex-column h-100">
+    <header>
+        <!-- Fixed navbar -->
+        <!--nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light"-->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <!--nav class="navbar navbar-expand-md navbar-dark bg-dark"-->
+            <div class="container-fluid">
+                <!--a class="navbar-brand" href="index.html"-->
+                <a class="navbar-brand">
+                    <strong>Mogilev in 1943</strong>
+                    <span class="navbar-subtitle"> | Then and Now </span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" id="about-link">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Map -->
+    <main class="flex-shrink-0 flex-grow-1 position-relative">
+        <!--div id="map" class="h-100 w-100"-->
+        <div id="map" class="d-flex w-100">
+            <div id="home-control" class="ol-control" title="Default Zoom">
+                <img src="./images/home.png" alt="Home" class="ol-home-icon">
+            </div>
+            
+            <div id="layers-control" class="ol-control" title="Change Base Map">
+                <button type="button" id="layersToggle">
+                  <img src="./images/layer.png" alt="Layers" class="ol-layers-icon">
+                </button>
+
+                <div id="basemapOptions" class="basemap-options" style="display: none;"> 
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="basemap" id="google_hybrid" data-basemap="google_hybrid" checked>
+                      <label class="form-check-label" for="google_hybrid">Google Satellite Hybrid</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="basemap" id="google_satellite" data-basemap="google_satellite">
+                      <label class="form-check-label" for="google_satellite">Google Satellite</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="basemap" id="google_map" data-basemap="google_map">
+                      <label class="form-check-label" for="google_satellite">Google Map</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="basemap" id="osm" data-basemap="osm">
+                      <label class="form-check-label" for="osm">OpenStreetMap</label>
+                    </div>
+                </div>
+                
+                <div id="overview-map-control" class="ol-control ol-custom-overviewmap" title="Overview Map">
+                    <button type="button" class="ol-overview-map-button">
+                        <span class="ol-overview-map-button-icon">«</span> <!-- Default arrow pointing left -->
+                    </button>
+                    <div class="ol-overview-map">
+                        <img src="./images/overview_map.png" alt="Overview Map" class="overview-map-image">
+                    </div>
+                </div>
+            </div>
+           
+            <!--div id="overview-container" class="position-absolute bottom-0 end-0 m-2">
+
+            </div-->
+        </div>
+        
+        <!--div id="about-card" class="card panel panel-tool pull-right clickable close-icon d-none position-absolute top-50 start-50 translate-middle"-->
+        <div id="about-card" class="card panel panel-tool pull-right clickable close-icon d-none position-absolute start-50">
+        <!--div id="about-card" class="card panel panel-tool pull-right clickable close-icon d-none position-absolute start-50 translate-middle"-->
+            <div class="card-header">
+                <strong>About</strong>
+                <!--h5 class="mb-0">About This Application</h5-->
+                <!--span class="pull-right clickable close-icon" data-effect="fadeOut"><i class="fa fa-times"></i></span-->
+                
+                <!--button type="button" class="btn-close float-end" aria-label="Close" id="close-card"></button> <!-- Close button -->
+                <button type="button" class="btn-close float-end text-white" aria-label="Close" id="close-card"></button>
+            </div>
+            
+            <div class="card-body">                
+                <p class="card-text">               
+                    <p><strong>"Mogilev in 1943 | Then and Now"</strong> is a web mapping application designed to:</p>
+    
+                    <ul>
+                        <li>Provide a visual comparison between historical aerial photography from 1943 and current web maps of Mogilev, allowing users to explore urban landscape changes since World War II.</li>
+                        <li>Serve as an educational tool for students and researchers interested in urban development and historical geography.</li>
+                    </ul>
+                    
+                    <h3>Attributions</h3>
+                    
+                    <table>
+                        <tr>
+                            <th>Resource</th>
+                            <th>Source</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Aerial Photography</strong></td>
+                            <td>Open private archive of documents on the history of Mogilev: <a href="https://goo.gl/photos/k3HPARvHWxrvbhJS7" target="_blank">Photo Archive of Mogilev's History</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Overview Map Image</strong></td>
+                            <td>Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Belarus_in_Europe_(relief)_(-mini_map).svg" target="_blank">Belarus in Europe</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Application Icon</strong></td>
+                            <td>A collection of minimalist icons by <a href="https://feathericons.com/" target="_blank">Feather Icons</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Layers icon</strong></td>
+                            <td><a href="https://www.flaticon.com/free-icons/layers" title="layers icons" target="_blank"> Created by Radhe Icon - Flaticon</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Home icon</strong></td>
+                            <td><a href="https://www.flaticon.com/free-icons/home" title="home icons" target="_blank"> Created by Dave Gandy - Flaticon</a></td>
+                            
+                        </tr>
+                        <tr>
+                            <td><strong>Developed by</strong></td>
+                            <td><a href="mailto:map.paganel@gmail.com">map.paganel@gmail.com</a></td>
+                        </tr>
+                    </table>
+                </p>
+                
+            </div>
+        </div>
+        
+    </main>
+    
+    <footer class="footer mt-auto py-3 bg-body-tertiary">
+        <div class="container d-flex justify-content-between align-items-center"> <!-- Use flexbox for alignment -->
+            <div id="swipe-container">
+                <input id="swipe" type="range" min="0" max="100" value="0">
+            </div>
+            <!--span class="text-body-secondary ms-auto">&copy; map.paganel@gmail.com</span> <!-- Align email to the right -->
+        </div>
+    </footer>
+    
+    
+    <!-- Scripts -->
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <!-- OpenLayers library -->
+    <script src='./libs/v10.2.1-package/dist/ol.js'></script>
+
+    <!-- Application Script -->
+    <script type="module" src="./scripts/viewer.js"></script>
+    
+    <script type="module">              
+        import { Viewer, showPanel, init } from './scripts/viewer.js';
+  
+        // Expose necessary functions to the global scope
+        window.Viewer = Viewer;
+        window.showPanel = showPanel;
+        window.init = init;
+
+    </script>
+  </body>
+</html>

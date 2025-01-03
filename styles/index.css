@@ -1,0 +1,339 @@
+:root {
+    --navbar-height: 1px;
+    --main-top: 1px;
+    --map-top: 1px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Set the top of the Main element exactly under the navbar */
+main {
+    top: calc(var(--main-top)); 
+}
+
+#map {
+    /*position: fixed;*/
+    top: calc(var(--map-top)); 
+}
+
+
+/* General styles for the About card */
+#about-card {
+    max-width: 90%; /* Prevents the card from being too wide */
+    max-height: 90%; /* Prevents the card from being too tall */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for better visibility */
+    border-radius: 8px; /* Smooth corners */
+    z-index: 1050; /* Ensures the card appears above other elements */
+    top: 1px; 
+    transform: translateX(-50%); /* Center adjustment */
+}
+
+/* Header styles for the About card */
+.card-header {
+    background-color: #007bff; /* Primary color for header */
+    color: white; /* Text color for header */
+    padding: 10px; /* Padding around header content */
+    font-size: 1rem; /* Font size for header text */
+}
+
+/* Body styles for the About card */
+#about-card .card-body {
+    overflow-y: auto; /* Enables vertical scrolling for long content */
+}
+
+/* About card text styles */
+h1 {
+  font-size: calc(1.5rem + 2vw); /* Scales with viewport width */
+}
+
+table {
+    width: 100%; /* Make the table full-width */
+    border-collapse: collapse; /* Merge borders */
+    margin-top: 20px; /* Add some space above the table */
+}
+
+th, td {
+    border: 1px solid #ccc; /* Light gray border for cells */
+    padding: 10px; /* Space inside cells */
+    text-align: left; /* Align text to the left */
+}
+
+th {
+    background-color: #f2f2f2; /* Light background for header */
+    font-weight: bold; /* Bold text for headers */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for better readability */
+}
+
+/* Attribution styling */
+.ol-attribution {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    right: 0.5rem;
+    bottom: calc(var(--footer-height)); 
+}
+
+.ol-attribution ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ol-attribution li {
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.ol-attribution a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.ol-attribution a:hover {
+    text-decoration: underline;
+}
+
+/* Zoom buttons controls */
+.ol-zoom {
+    position: absolute;
+    /*top: calc(var(--navbar-height) + 10px);*/
+    top: 10px; /*relative to the parent element #map*/
+    left: 10px; 
+}
+.ol-zoom button {
+    width: 33px; 
+    height: 33px; 
+}
+
+/* Common OpenLayers controls styles */
+
+.ol-control {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 0.25rem;
+
+}
+
+.ol-control button {
+    background-color: #fff;
+    color: #6c757d;
+    font-size: 1.25rem;
+    border: 1px solid #ced4da;
+}
+
+.ol-control button:hover {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+/* Google Logo Control Styles */
+.ol-google-logo {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+}
+  
+/* Home Control Styles */
+#home-control {
+    position: absolute;
+    /*top: calc(var(--navbar-height) + 85px);*/
+    top: 85px; /*relative to the parent element #map*/
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+#home-control:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.ol-home-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Layers Control Styles */
+#layers-control {
+    position: absolute;
+    /*top: calc(var(--navbar-height) + 10px);*/
+    top: 10px; /*relative to the parent element #map*/
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#layers-control:hover {
+    background-color: #f4f4f4;
+}
+
+#layers-control .dropdown-menu {
+    min-width: 200px;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 0;
+}
+
+#layers-control .dropdown-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#layers-control .dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.basemap-options {
+    background-color: white;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
+    padding: 10px;
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-check {
+    margin-bottom: 8px;
+}
+
+.ol-layers-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+#layers-control:hover .ol-layers-icon {
+    opacity: 1;
+}
+
+/* Overview Map Control Styles*/
+#overview-map-control {
+    position: absolute; /* Position relative to the map */
+    /*top: calc(var(--navbar-height) + 50px); */
+    top: 50px; /*relative to the parent element #map*/
+    right: 10px; 
+    z-index: 1000; /* Ensure it appears above other elements */
+    background-color: rgba(255, 255, 255, 0.9); /* Light background for visibility */
+    border: 1px solid rgba(0, 60, 136, .5); /* Border around the control */
+    border-radius: 4px; /* Rounded corners */
+    padding: 1px; /* Padding around the control */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
+    height: auto;
+}
+
+#overview-map-control.ol-collapsed {
+    width: 35px; 
+    height: 35px;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ol-overview-map-button {
+    background-color: white; /* White background for button */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    position: absolute;
+    top: 1px; /* Align with control's top edge */
+    right: 1px; /* Align with control's right edge */ 
+}
+
+.ol-overview-map-button:hover {
+    background-color: rgba(0, 60, 136, .1); /* Light hover effect */
+}
+
+.ol-overview-map-button-icon {
+    font-size: 1.5em; /* Adjust icon size */
+}
+
+.ol-overview-map {
+    display: none; /* Hide by default */
+    width: 100%; /* Fit within parent container */
+    height: auto; /* Allow height to adjust automatically based on content */
+    max-width: calc(40vw); /* Set maximum width to a percentage of viewport width (40% in this case) */
+    /*max-height: calc(40vh); /* Set maximum height to a percentage of viewport height (40% in this case) */
+    border: 1px solid rgba(0, 60, 136, .5); /* Border around overview map */
+    background-color: #f8f9fa; /* Background color of overview map */
+}
+
+.overview-map-image {
+    width: 100%; /* Image takes full width of the container */
+    height: auto; /* Height adjusts automatically to maintain aspect ratio */
+    object-fit: contain; /* Ensures the entire image fits within the container without distortion */
+}
+
+#overview-map-control.ol-collapsed .ol-overview-map .overview-map-image {
+    display: none; /* Hide when collapsed */
+}
+
+/* Swipe slider styling */
+
+#swipe-container {
+    position: absolute;
+    bottom: 10px; 
+    height: 30px; 
+}
+
+
+#swipe {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+	background: #A9A9A9;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+#swipe::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 30px;
+
+	background: #007BFF;
+    cursor: pointer;
+    border-radius: 0; 
+}
+
+#swipe::-moz-range-thumb {
+    width: 15px;
+    height: 30px;
+    background: #007BFF;
+    cursor: pointer;
+    border-radius: 0; 
+}
